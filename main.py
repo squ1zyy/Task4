@@ -18,16 +18,19 @@ def process_file(file_path):
             print(count_unique_chars(line.strip()))
 
 
-def main():
+def create_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('--string', help='Входная строка')
     parser.add_argument('--file', help='Входной файл')
-    args = parser.parse_args()
+    return parser.parse_args()
     
+
+def main(args):
     if args.string:
         process_string(args.string)
     elif args.file:
         process_file(args.file)
     
 if __name__ == '__main__':
-    main()
+    args = create_parser()
+    main(args)
