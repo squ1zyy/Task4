@@ -22,15 +22,15 @@ def create_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('--string', help='Входная строка')
     parser.add_argument('--file', help='Входной файл')
-    return parser.parse_args()
-    
+    return parser
 
 def main(args):
+    parser = create_parser()
+    args = parser.parse_args(args)
     if args.string:
         process_string(args.string)
     elif args.file:
         process_file(args.file)
-    
+
 if __name__ == '__main__':
-    args = create_parser()
-    main(args)
+    print(main([]))
