@@ -18,16 +18,16 @@ def process_file(file_path):
             print(count_unique_chars(line.strip()))
 
 
-def main(args):
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--string', help='Входная строка')
+    parser.add_argument('--file', help='Входной файл')
+    args = parser.parse_args()
+    
     if args.string:
         process_string(args.string)
     elif args.file:
         process_file(args.file)
-
-
+    
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Подсчитайте количество уникальных символов в строке или файле')
-    parser.add_argument('--string', help='Входная строка')
-    parser.add_argument('--file', help='Входной файл')
-    args = parser.parse_args()
-    main(args)
+    main()
