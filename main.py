@@ -9,28 +9,28 @@ def count_unique_chars(s):
 
 
 def process_string(s):
-    print(count_unique_chars(s))
+    return count_unique_chars(s)
     
 
-def process_file(file_path):
-    with open(file_path, 'r') as f:
+def process_file(file_arg):
+    results = []
+    with file_arg as f:
         for line in f:
-            print(count_unique_chars(line.strip()))
-
+            results.append(count_unique_chars(line.strip()))
+    return results
 
 def create_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('--string', help='Входная строка')
-    parser.add_argument('--file', help='Входной файл')
+    parser.add_argument('--file', type=argparse.FileType('r'), help='Входной файл')
     return parser
 
 def main(args):
-    parser = create_parser()
-    args = parser.parse_args(args)
+    args = create_parser().parse_args(args)
     if args.string:
         process_string(args.string)
     elif args.file:
         process_file(args.file)
 
 if __name__ == '__main__':
-    print(main([]))
+    print(main)
