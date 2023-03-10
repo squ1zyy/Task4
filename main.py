@@ -8,10 +8,6 @@ def count_unique_chars(s):
     return Counter(Counter(s).values())[1]
 
 
-def process_string(s):
-    return count_unique_chars(s)
-    
-
 def process_file(file_arg):
     results = []
     with file_arg as f:
@@ -19,18 +15,29 @@ def process_file(file_arg):
             results.append(count_unique_chars(line.strip()))
     return results
 
-def create_parser(args):
+
+def create_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('--string', help='Входная строка')
     parser.add_argument('--file', type=argparse.FileType('r'), help='Входной файл')
     return parser
 
-def main(argv):
-    argv = create_parser(args)
-    if args.string:
-        process_string(args.string)
-    elif args.file:
-        process_file(args.file)
+
+def main():
+    parser = create_parser()
+    args = parser.parse_args()
+
+    if args.file:
+        results = process_file(args.file)
+    elif args.string:
+        results = [process_string(args.string)]
+    else:
+        parser.print_help()
+        return
+
+    for result in results:
+        print(result)
+
 
 if __name__ == '__main__':
     print(main())
