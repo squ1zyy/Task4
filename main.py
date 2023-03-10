@@ -24,8 +24,8 @@ def create_parser():
 
 
 def main():
-    parser = create_parser()
-    args = parser.parse_args()
+    parser = parser.parse_args()
+    args = create_parser(argv)
 
     if args.file:
         results = process_file(args.file)
