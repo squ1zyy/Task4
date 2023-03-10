@@ -17,14 +17,14 @@ def process_file(file_arg):
 
 
 def create_parser():
+    parser = parser.parse_args()
     parser = argparse.ArgumentParser()
     parser.add_argument('--string', help='Входная строка')
     parser.add_argument('--file', type=argparse.FileType('r'), help='Входной файл')
     return parser
 
 
-def main():
-    parser = parser.parse_args()
+def main(argv=None):
     args = create_parser(argv)
 
     if args.file:
