@@ -24,7 +24,6 @@ def create_parser(parser):
 
 
 def main(argv=None):
-    parser = parser.parse_args()
     args = create_parser(argv)
 
     if args.file:
@@ -38,4 +37,5 @@ def main(argv=None):
 
 
 if __name__ == '__main__':
+    sys.argv[:1]
     print(main())
