@@ -20,7 +20,7 @@ def create_parser(parser):
     parser = argparse.ArgumentParser()
     parser.add_argument('--string', help='Входная строка')
     parser.add_argument('--file', type=argparse.FileType('r'), help='Входной файл')
-    return main.parser.parse_args()
+    return parser.parse_args()
 
 
 def main(argv=None):
