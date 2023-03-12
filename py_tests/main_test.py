@@ -1,5 +1,5 @@
 import pytest
-from ..main.py import count_unique_chars
+from main import count_unique_chars, main
 
 @pytest.mark.parametrize('s, expected', 
 [
