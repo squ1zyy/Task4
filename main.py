@@ -16,23 +16,21 @@ def process_file(file_arg):
     return results
 
 
-def create_parser():
-    parser = parser.parse_args()
+def create_parser(parser):
     parser = argparse.ArgumentParser()
     parser.add_argument('--string', help='Входная строка')
     parser.add_argument('--file', type=argparse.FileType('r'), help='Входной файл')
-    return parser
+    return parser.parse_args()
 
 
 def main(argv=None):
+    parser = parser.parse_args()
     args = create_parser(argv)
 
     if args.file:
         results = process_file(args.file)
     elif args.string:
         results = [process_string(args.string)]
-    else:
-        parser.print_help()
         return
 
     for result in results:
