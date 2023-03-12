@@ -20,7 +20,7 @@ def create_parser(parser):
     parser = argparse.ArgumentParser()
     parser.add_argument('--string', help='Входная строка')
     parser.add_argument('--file', type=argparse.FileType('r'), help='Входной файл')
-    return parser.parse_args()
+    return main.parser.parse_args()
 
 
 def main(argv=None):
@@ -37,5 +37,6 @@ def main(argv=None):
 
 
 if __name__ == '__main__':
+    import sys
     sys.argv[:1]
     print(main())
